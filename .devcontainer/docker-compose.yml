@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  redis:
+    image: redis:6.2-alpine
+    ports:
+      - "6379:6379" # 映射 Redis 默认端口
+    volumes:
+      - redis-data:/data # 持久化数据
+
+volumes:
+  redis-data:
