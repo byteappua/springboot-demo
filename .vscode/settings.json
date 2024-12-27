@@ -1,0 +1,8 @@
+{
+  "java.configuration.runtime": [
+    {
+      "name": "jdk-21",
+      "path": "/path/to/jdk-21"
+    }
+  ]
+}
