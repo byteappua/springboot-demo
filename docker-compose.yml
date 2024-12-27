@@ -1,16 +1,27 @@
 version: "3.7"
-
 services:
   redis:
     image: redis:6.2-alpine
     hostname: redis
     ports:
       - "6379:6379" # 映射 Redis 默认端口
-    volumes:
-      - redis-data:/data # 持久化数据
+    networks:
+      - my-network
   tunnel:
     image: cloudflare/cloudflared:latest
     restart: always
+    networks:
+      - my-network
     command: tunnel --no-autoupdate run --token eyJhIjoiYjAwMTg4YTA3YzFkNzM3OGZhZjgyNDMxOWRhODJjMzEiLCJ0IjoiZWJiMjMxZDItZjUyNy00M2RjLWFiNDUtMjdkMTJjZTg1YjAzIiwicyI6Ill6STJNamczTXpndE0ySTFaUzAwTVROaUxXSXlOR0V0TmpkaE56Y3pOalpoT0dGaCJ9
-volumes:
-  redis-data:
+  nginx:
+    image: nginx:latest
+    hostname: nginx
+    restart: always
+    ports:
+      - "80:80" # 将主机的80端口映射到容器的80端口
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
