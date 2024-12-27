@@ -1,7 +1,7 @@
 {
   "java.configuration.runtimes": [
     {
-      "name": "jdk-21",
+      "name": "JavaSE-21",
       "path": "/path/to/jdk-21"
     }
   ]
