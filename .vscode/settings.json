@@ -4,5 +4,6 @@
       "name": "JavaSE-21",
       "path": "/path/to/jdk-21"
     }
-  ]
+  ],
+  "java.compile.nullAnalysis.mode": "automatic"
 }
